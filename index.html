@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ілля Батюк — Відеомонтажер</title>
+<title>Ілля Батюк - Відеомонтажер</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -24,6 +24,7 @@
   .nav-links{display:flex;gap:2rem;list-style:none;}
   .nav-links a{font-family:'Space Mono',monospace;font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color .2s;}
   .nav-links a:hover{color:var(--accent);}
+  .hamburger{display:none;}
 
   /* HERO */
   .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3rem 5rem;position:relative;overflow:hidden;}
@@ -82,17 +83,17 @@
   .port-panel{display:none;}
   .port-panel.active{display:block;}
 
-  /* Grid for 9:16 (vertical) — 3 items */
+  /* Grid for 9:16 (vertical) - 3 items */
   .port-grid-v{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);border-top:none;}
-  /* Each cell — 9:16 ratio */
+  /* Each cell - 9:16 ratio */
   .p-item-v{aspect-ratio:9/16;position:relative;overflow:hidden;background:var(--bg3);cursor:pointer;}
 
-  /* Grid for 16:9 (horizontal) — 3 items */
+  /* Grid for 16:9 (horizontal) - 3 items */
   .port-grid-h{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);border-top:none;}
-  /* Each cell — 16:9 ratio */
+  /* Each cell - 16:9 ratio */
   .p-item-h{aspect-ratio:16/9;position:relative;overflow:hidden;background:var(--bg3);cursor:pointer;}
 
-  /* Grid for UGC — 1 item 9:16, centered */
+  /* Grid for UGC - 1 item 9:16, centered */
   .port-grid-ugc{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);border-top:none;}
   .port-grid-ugc .p-item-v{grid-column:2;}
 
@@ -100,7 +101,7 @@
   .p-item-v:hover .p-item-bg,
   .p-item-h:hover .p-item-bg{transform:scale(1.04);}
 
-  /* VIDEO EMBED — відео вставляється сюди */
+  /* VIDEO EMBED - відео вставляється сюди */
   .p-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 
   .p-overlay{position:absolute;inset:0;background:rgba(8,8,8,.65);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;opacity:0;transition:opacity .3s;}
@@ -121,7 +122,7 @@
   .drive-link{display:inline-flex;align-items:center;gap:.8rem;margin-top:2.5rem;padding:1rem 1.8rem;border:1px solid var(--border);color:var(--text-muted);font-family:'Space Mono',monospace;font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;transition:border-color .2s,color .2s,transform .2s;}
   .drive-link:hover{border-color:var(--accent);color:var(--accent);transform:translateX(4px);}
 
-  /* SERVICES — tabs */
+  /* SERVICES - tabs */
   .svc-bg{background:var(--bg);}
   .svc-tabs{display:flex;margin-top:3.5rem;border:1px solid var(--border);border-bottom:none;overflow-x:auto;}
   .svc-tab-btn{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.85rem 1.6rem;border:none;background:transparent;color:var(--text-muted);cursor:pointer;border-right:1px solid var(--border);white-space:nowrap;transition:color .2s,background .2s;}
@@ -211,17 +212,140 @@
   .reveal{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s ease;}
   .reveal.visible{opacity:1;transform:translateY(0);}
 
-  @media(max-width:900px){
-    nav{padding:1.1rem 1.5rem;} .nav-links{display:none;}
-    section{padding:5rem 1.5rem;} .hero{padding:0 1.5rem 4rem;}
-    .about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem;}
+  /* ═══════════════════════════════════════
+     MOBILE — до 768px
+  ═══════════════════════════════════════ */
+  @media(max-width:768px){
+    /* Курсор — прибираємо на тач-пристроях */
+    .cursor,.cursor-ring{display:none;}
+    body{cursor:auto;}
+
+    /* Навігація */
+    nav{padding:1rem 1.2rem;}
+    .nav-links{display:none;}
+
+    /* Гамбургер-меню */
+    .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:.4rem;background:none;border:none;z-index:200;}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--text);transition:all .3s;}
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+    .nav-mobile{display:none;position:fixed;inset:0;background:rgba(8,8,8,.97);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+    .nav-mobile.open{display:flex;}
+    .nav-mobile a{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:.1em;color:var(--text);text-decoration:none;transition:color .2s;}
+    .nav-mobile a:hover{color:var(--accent);}
+
+    /* Hero */
+    .hero{padding:0 1.2rem 3.5rem;min-height:100svh;}
+    .hero-film{display:none;}
+    .hero-title{font-size:clamp(3.5rem,18vw,6rem);}
+    .hero-prof{font-size:.7rem;letter-spacing:.15em;}
+    .hero-sub{font-size:.95rem;max-width:100%;}
+    .hero-cta{margin-top:2rem;}
+    .btn-prim{padding:.8rem 1.6rem;font-size:.65rem;}
+    .hero-scroll{display:none;}
+
+    /* Sections */
+    section{padding:4rem 1.2rem;}
+    .s-title{font-size:clamp(2.2rem,10vw,3.5rem);}
+
+    /* About */
+    .about-grid{grid-template-columns:1fr;gap:2rem;margin-top:2.5rem;}
+    .about-card{padding:1.5rem;}
+    .sw-name{min-width:110px;font-size:.78rem;}
+    .skills-grid{grid-template-columns:1fr 1fr;gap:.5rem;}
+    .skill-pill{font-size:.75rem;padding:.5rem .7rem;}
+    .about-stats{grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem;padding-top:2rem;}
+    .stat-num{font-size:2.2rem;}
+
+    /* Motion Design layout - на мобільному у стовпець */
+    #tab-motion > div { grid-template-columns:1fr !important; }
+    #tab-motion > div > div:first-child { width:100% !important; padding-left:0 !important; max-width:100% !important; aspect-ratio:9/16; }
+
+    /* Portfolio tabs */
+    .port-tabs{margin-top:2rem;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .tab-btn{padding:.7rem .9rem;font-size:.55rem;letter-spacing:.1em;}
+
+    /* Portfolio grids — стовпці */
+    .port-grid-v{grid-template-columns:1fr;border-top:1px solid var(--border);}
+    .port-grid-h{grid-template-columns:1fr;}
+    .port-grid-ugc{grid-template-columns:1fr;}
+    .port-grid-ugc .p-item-v{grid-column:1;}
+
+    /* Відео-елементи — фіксована висота на мобільному */
+    .p-item-v{aspect-ratio:9/16;max-height:70vh;}
+    .p-item-h{aspect-ratio:16/9;}
+
+    /* Services */
+    .svc-tabs{margin-top:2rem;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .svc-tab-btn{padding:.7rem 1rem;font-size:.55rem;}
     .svc-grid{grid-template-columns:1fr;}
-    .port-grid-v,.port-grid-h{grid-template-columns:1fr 1fr;}
+    .svc-card{padding:1.8rem 1.4rem;}
+    .svc-title{font-size:1.5rem;}
+
+    /* Pricing */
+    .pricing-cards{grid-template-columns:1fr;}
+    .pr-card{padding:1.8rem 1.4rem;}
+    .pr-dollar{font-size:3rem;}
+    .pr-badge{right:1rem;}
+
+    /* Process */
+    .proc-steps{grid-template-columns:1fr;gap:2rem;}
+    .proc-steps::before{display:none;}
+    .step{padding:0;}
+
+    /* Contact */
+    .contact-grid{grid-template-columns:1fr;gap:2rem;}
+
+    /* Контакт-блок на повну ширину */
+    [style*="grid-template-columns:repeat(3,1fr)"]{
+      display:flex !important;
+      flex-direction:column !important;
+    }
+
+    /* Landing banner */
+    [style*="justify-content:space-between"]{
+      flex-direction:column;
+      align-items:flex-start !important;
+      gap:1.5rem;
+      padding:2rem 1.2rem;
+    }
+
+    /* Footer */
+    footer{flex-direction:column;gap:.8rem;text-align:center;padding:1.5rem 1.2rem;}
+    .f-copy{font-size:.55rem;}
+  }
+
+  /* ═══════════════════════════════════════
+     TABLET — 769px до 900px
+  ═══════════════════════════════════════ */
+  @media(min-width:769px) and (max-width:900px){
+    nav{padding:1.2rem 1.8rem;}
+    .nav-links{display:none;}
+    .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:.4rem;background:none;border:none;}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--text);}
+    .nav-mobile{display:none;position:fixed;inset:0;background:rgba(8,8,8,.97);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+    .nav-mobile.open{display:flex;}
+    .nav-mobile a{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:.1em;color:var(--text);text-decoration:none;}
+    .nav-mobile a:hover{color:var(--accent);}
+
+    section{padding:5rem 2rem;}
+    .hero{padding:0 2rem 4rem;}
+    .about-grid{grid-template-columns:1fr;gap:2.5rem;}
+    .svc-grid{grid-template-columns:1fr;}
+    .port-grid-v{grid-template-columns:repeat(2,1fr);}
     .port-grid-ugc{grid-template-columns:1fr;} .port-grid-ugc .p-item-v{grid-column:1;}
     .pricing-cards{grid-template-columns:1fr;}
-    .proc-steps{grid-template-columns:1fr 1fr;gap:2.5rem;} .proc-steps::before{display:none;}
-    .skills-grid{grid-template-columns:1fr;}
+    .proc-steps{grid-template-columns:1fr 1fr;gap:2rem;} .proc-steps::before{display:none;}
     footer{flex-direction:column;gap:1rem;text-align:center;}
+  }
+
+  /* Ховер — тільки на десктопі */
+  @media(hover:none){
+    .p-overlay{opacity:1;background:rgba(8,8,8,.35);}
+    .p-play{transform:scale(1);}
+    .btn-prim:hover{transform:none;box-shadow:none;}
   }
 </style>
 </head>
@@ -239,7 +363,20 @@
     <li><a href="#pricing">Ціни</a></li>
     <li><a href="#contact">Контакт</a></li>
   </ul>
+  <!-- Гамбургер — видно тільки на мобільному -->
+  <button class="hamburger" id="hamburger" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Мобільне меню -->
+<div class="nav-mobile" id="navMobile">
+  <a href="#about" onclick="closeMobile()">Про мене</a>
+  <a href="#services" onclick="closeMobile()">Послуги</a>
+  <a href="#portfolio" onclick="closeMobile()">Роботи</a>
+  <a href="#pricing" onclick="closeMobile()">Ціни</a>
+  <a href="#contact" onclick="closeMobile()">Контакт</a>
+</div>
 
 <!-- ═══════════════════════════════════════════
      HERO
@@ -271,7 +408,7 @@
      ABOUT
 ═══════════════════════════════════════════ -->
 <section id="about">
-  <div class="s-label">/ 01 — Про мене</div>
+  <div class="s-label">/ 01 - Про мене</div>
   <h2 class="s-title reveal">ХТО Я І<br>ЩО РОБЛЮ</h2>
   <div class="about-grid">
     <div class="about-card reveal">
@@ -287,9 +424,9 @@
       </div>
     </div>
     <div class="about-text reveal">
-      <p>Відеомонтажер із <strong>дворічним досвідом</strong>. Працюю з YouTube, TikTok та соціальними платформами — добре розумію <strong>поведінкову психологію глядача</strong> та актуальні тренди.</p>
+      <p>Відеомонтажер із <strong>дворічним досвідом</strong>. Працюю з YouTube, TikTok та соціальними платформами - добре розумію <strong>поведінкову психологію глядача</strong> та актуальні тренди.</p>
       <p>Створюю контент <strong>від сирого матеріалу до повного готового відео</strong>. Також працюю з <strong>UGC-контентом</strong>, вмію генерувати ШІ-аватари та ШІ-фото і відео продуктів.</p>
-      <p>Відкритий до <strong>будь-яких пропозицій та форматів відео</strong> — якщо є ідея, обговоримо.</p>
+      <p>Відкритий до <strong>будь-яких пропозицій та форматів відео</strong> - якщо є ідея, обговоримо.</p>
       <div class="skills-grid">
         <div class="skill-pill">Сторітелінг</div>
         <div class="skill-pill">UGC-контент</div>
@@ -311,10 +448,10 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     SERVICES — 3 вкладки
+     SERVICES - 3 вкладки
 ═══════════════════════════════════════════ -->
 <section id="services" class="svc-bg">
-  <div class="s-label">/ 02 — Послуги</div>
+  <div class="s-label">/ 02 - Послуги</div>
   <h2 class="s-title reveal">ЩО<br>РОБЛЮ</h2>
 
   <div class="svc-tabs reveal">
@@ -330,7 +467,7 @@
         <div class="svc-num">01</div>
         <div class="svc-icon">📱</div>
         <div class="svc-title">Монтаж та динаміка</div>
-        <p class="svc-desc">Динамічний монтаж вертикального контенту для Instagram, TikTok і YouTube Shorts. Трендові переходи, підбір музики — контент, який зупиняє скролінг.</p>
+        <p class="svc-desc">Динамічний монтаж вертикального контенту для Instagram, TikTok і YouTube Shorts. Трендові переходи, підбір музики - контент, який зупиняє скролінг.</p>
         <div class="svc-tags"><span class="tag">Transitions</span><span class="tag">Динаміка</span><span class="tag">9:16</span><span class="tag">Hook</span></div>
       </div>
       <div class="svc-card">
@@ -344,7 +481,7 @@
         <div class="svc-num">03</div>
         <div class="svc-icon">🎵</div>
         <div class="svc-title">Саунддизайн</div>
-        <p class="svc-desc">Підбір та накладання музики, звукові ефекти (SFX), синхронізація відео з ритмом — те, що робить відео живим.</p>
+        <p class="svc-desc">Підбір та накладання музики, звукові ефекти (SFX), синхронізація відео з ритмом - те, що робить відео живим.</p>
         <div class="svc-tags"><span class="tag">SFX</span><span class="tag">Музика</span><span class="tag">Beat sync</span></div>
       </div>
       <div class="svc-card">
@@ -364,14 +501,14 @@
         <div class="svc-num">01</div>
         <div class="svc-icon">🎥</div>
         <div class="svc-title">YouTube-відео</div>
-        <p class="svc-desc">Повний монтаж довгих відео для YouTube: сторітелінг, огляди, інтерв'ю. Прибираю паузи й помилки, додаю B-roll, графіку та нижні елементи.</p>
+        <p class="svc-desc">Повний монтаж довгих відео для YouTube: сторітелінг, огляди, інтерв'ю. Прибираю паузи й помилки, додаю B-roll та графічні елементи.</p>
         <div class="svc-tags"><span class="tag">Long-form</span><span class="tag">16:9</span><span class="tag">Chapters</span></div>
       </div>
       <div class="svc-card">
         <div class="svc-num">02</div>
         <div class="svc-icon">✨</div>
         <div class="svc-title">Intro / Outro</div>
-        <p class="svc-desc">Анімовані заставки та відбивки для YouTube-каналу. Моушен-дизайн у Fusion — кастомний стиль під ваш бренд.</p>
+        <p class="svc-desc">Анімовані заставки та відбивки для YouTube-каналу. Моушен-дизайн у Fusion - кастомний стиль під ваш бренд.</p>
         <div class="svc-tags"><span class="tag">Fusion</span><span class="tag">Motion</span><span class="tag">Брендинг</span></div>
       </div>
       <div class="svc-card">
@@ -398,7 +535,7 @@
         <div class="svc-num">01</div>
         <div class="svc-icon">🛍️</div>
         <div class="svc-title">UGC-контент</div>
-        <p class="svc-desc">UGC-відео для брендів і рекламних кампаній. Від ідеї до готового матеріалу — нативний контент, якому довіряють.</p>
+        <p class="svc-desc">UGC-відео для брендів і рекламних кампаній. Від ідеї до готового матеріалу - нативний контент, якому довіряють.</p>
         <div class="svc-tags"><span class="tag">UGC</span><span class="tag">Бренди</span><span class="tag">Реклама</span></div>
       </div>
       <div class="svc-card">
@@ -419,7 +556,7 @@
         <div class="svc-num">04</div>
         <div class="svc-icon">🔄</div>
         <div class="svc-title">Повний цикл</div>
-        <p class="svc-desc">Від концепції до готового рекламного матеріалу. Беру на себе весь процес — ти отримуєш фінальний файл без зайвих зусиль.</p>
+        <p class="svc-desc">Від концепції до готового рекламного матеріалу. Беру на себе весь процес - ти отримуєш фінальний файл без зайвих зусиль.</p>
         <div class="svc-tags"><span class="tag">Під ключ</span><span class="tag">Концепція</span><span class="tag">Реалізація</span></div>
       </div>
     </div>
@@ -430,7 +567,7 @@
      PORTFOLIO
 ═══════════════════════════════════════════ -->
 <section id="portfolio" class="port-bg">
-  <div class="s-label">/ 03 — Портфоліо</div>
+  <div class="s-label">/ 03 - Портфоліо</div>
   <h2 class="s-title reveal">МОЇ<br>РОБОТИ</h2>
 
   <div class="port-tabs reveal">
@@ -442,18 +579,18 @@
     <button class="tab-btn" data-tab="ai">AI</button>
   </div>
 
-  <!-- ─── ВКЛАДКА 1: TikTok / Reels / Shorts — 3 відео 9:16 ─── -->
+  <!-- ─── ВКЛАДКА 1: TikTok / Reels / Shorts - 3 відео 9:16 ─── -->
   <div class="port-panel active" id="tab-reels">
     <div class="port-grid-v">
 
       <!-- ═══════════════════════════════════════════════════════
-           ВІДЕО #1 — TikTok / Reels / Shorts (9:16)
+           ВІДЕО #1 - TikTok / Reels / Shorts (9:16)
            ЯК ДОДАТИ ВІДЕО:
-           Варіант A — YouTube/TikTok embed:
+           Варіант A - YouTube/TikTok embed:
              Видали тег <div class="p-ph">...</div>
              Вставте замість нього:
              <iframe class="p-video" src="https://www.youtube.com/embed/ВАШ_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-           Варіант B — власний відеофайл (mp4):
+           Варіант B - власний відеофайл (mp4):
              Видали тег <div class="p-ph">...</div>
              Вставте замість нього:
              <video class="p-video" autoplay muted loop playsinline>
@@ -472,7 +609,7 @@
       </div>
 
       <!-- ═══════════════════════════════════════════════════════
-           ВІДЕО #2 — TikTok / Reels / Shorts (9:16)
+           ВІДЕО #2 - TikTok / Reels / Shorts (9:16)
            (інструкція така ж, як вище)
       ═══════════════════════════════════════════════════════ -->
       <div class="p-item-v">
@@ -487,7 +624,7 @@
       </div>
 
       <!-- ═══════════════════════════════════════════════════════
-           ВІДЕО #3 — TikTok / Reels / Shorts (9:16)
+           ВІДЕО #3 - TikTok / Reels / Shorts (9:16)
            (інструкція така ж, як вище)
       ═══════════════════════════════════════════════════════ -->
       <div class="p-item-v">
@@ -504,18 +641,18 @@
     </div>
   </div>
 
-  <!-- ─── ВКЛАДКА 2: YouTube / Intros — 3 відео 16:9 ─── -->
+  <!-- ─── ВКЛАДКА 2: YouTube / Intros - 3 відео 16:9 ─── -->
   <div class="port-panel" id="tab-youtube">
     <div class="port-grid-h">
 
       <!-- ═══════════════════════════════════════════════════════
-           ВІДЕО #1 — YouTube / Intros (16:9)
+           ВІДЕО #1 - YouTube / Intros (16:9)
            ЯК ДОДАТИ ВІДЕО:
-           Варіант A — YouTube embed:
+           Варіант A - YouTube embed:
              Видали тег <div class="p-ph">...</div>
              Вставте замість нього:
              <iframe class="p-video" src="https://www.youtube.com/embed/ВАШ_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-           Варіант B — власний відеофайл:
+           Варіант B - власний відеофайл:
              <video class="p-video" autoplay muted loop playsinline>
                <source src="videos/youtube-1.mp4" type="video/mp4">
              </video>
@@ -532,7 +669,7 @@
       </div>
 
       <!-- ═══════════════════════════════════════════════════════
-           ВІДЕО #2 — YouTube / Intros (16:9)
+           ВІДЕО #2 - YouTube / Intros (16:9)
       ═══════════════════════════════════════════════════════ -->
       <div class="p-item-h">
         <div class="p-item-bg" style="background:linear-gradient(135deg,#0d1a1a,#0d2020)"></div>
@@ -546,7 +683,7 @@
       </div>
 
       <!-- ═══════════════════════════════════════════════════════
-           ВІДЕО #3 — YouTube / Intros (16:9)
+           ВІДЕО #3 - YouTube / Intros (16:9)
       ═══════════════════════════════════════════════════════ -->
       <div class="p-item-h">
         <div class="p-item-bg" style="background:linear-gradient(135deg,#1a1a0d,#2a2a10)"></div>
@@ -562,67 +699,61 @@
     </div>
   </div>
 
-  <!-- ─── ВКЛАДКА 3: Motion Design — 1 відео 9:16 + 2 відео 16:9 ─── -->
+  <!-- ─── ВКЛАДКА 3: Motion Design - 1 відео 9:16 + 2 відео 16:9 ─── -->
   <div class="port-panel" id="tab-motion">
-    <!-- Верхній ряд: 1 вертикальне відео 9:16 по центру -->
-    <div class="port-grid-ugc" style="border:1px solid var(--border);border-bottom:none;">
-      <div></div>
-      <!-- ═══════════════════════════════════════════════════════
-           ВІДЕО #1 — Motion Design (9:16)
-      ═══════════════════════════════════════════════════════ -->
-      <div class="p-item-v">
-        <div class="p-item-bg" style="background:linear-gradient(160deg,#0d0d1a,#14142d)"></div>
-        <iframe class="p-video"
-            src="https://drive.google.com/file/d/1wE5kMddZRiULPnmYeBvRR544yBAdCXAQ/preview"
-            frameborder="0"
-            allow="autoplay"
-            allowfullscreen>
-          </iframe>
-        <div class="p-label">9:16</div>
+    <!--
+      Лівий стовпець: 9:16 відео на повну висоту
+      Правий стовпець: два 16:9 відео одне під одним
+    -->
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:1.5px;background:var(--border);border:1px solid var(--border);border-top:none;align-items:stretch;">
+
+      <!-- Ліва колонка: вертикальне відео 9:16 -->
+      <div style="position:relative;width:0;padding-left:calc((100vh - 200px) * 9/16);max-width:40%;background:#000;overflow:hidden;">
+        <iframe
+          src="https://drive.google.com/file/d/1wE5kMddZRiULPnmYeBvRR544yBAdCXAQ/preview"
+          style="position:absolute;left:-2px;right:-2px;top:-62px;bottom:-62px;width:calc(100% + 4px);height:calc(100% + 124px);border:none;"
+          allow="autoplay"
+          allowfullscreen>
+        </iframe>
       </div>
-      <div></div>
-    </div>
-    <!-- Нижній ряд: 2 горизонтальних відео 16:9 -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--border);border:1px solid var(--border);border-top:none;">
-      <!-- ═══════════════════════════════════════════════════════
-           ВІДЕО #2 — Motion Design (16:9)
-      ═══════════════════════════════════════════════════════ -->
-      <div class="p-item-h">
-        <div class="p-item-bg" style="background:linear-gradient(135deg,#1a0d1a,#2d142d)"></div>
-       <iframe class="p-video"
+
+      <!-- Права колонка: два 16:9 відео одне під одним -->
+      <div style="display:flex;flex-direction:column;gap:1.5px;background:var(--border);">
+
+        <!-- 16:9 відео #1 -->
+        <div class="p-item-h" style="background:#000;flex:1;">
+          <iframe
             src="https://drive.google.com/file/d/1_4WKDUEZLhp14AzmnU1BrkOPfehtFROs/preview"
-            frameborder="0"
+            style="position:absolute;left:-2px;right:-2px;top:-62px;bottom:-62px;width:calc(100% + 4px);height:calc(100% + 124px);border:none;"
             allow="autoplay"
             allowfullscreen>
           </iframe>
-        <div class="p-label">16:9</div>
-      </div>
-      <!-- ═══════════════════════════════════════════════════════
-           ВІДЕО #3 — Motion Design (16:9)
-      ═══════════════════════════════════════════════════════ -->
-      <div class="p-item-h">
-        <div class="p-item-bg" style="background:linear-gradient(135deg,#141a0d,#202a14)"></div>
-      <iframe class="p-video"
+        </div>
+
+        <!-- 16:9 відео #2 -->
+        <div class="p-item-h" style="background:#000;flex:1;">
+          <iframe
             src="https://drive.google.com/file/d/1YiONpt5Q6HmL5i-SZdFW59g0rZXGdvz8/preview"
-            frameborder="0"
+            style="position:absolute;left:-2px;right:-2px;top:-62px;bottom:-62px;width:calc(100% + 4px);height:calc(100% + 124px);border:none;"
             allow="autoplay"
             allowfullscreen>
           </iframe>
-        <div class="p-label">16:9</div>
+        </div>
+
       </div>
     </div>
   </div>
 
-  <!-- ─── ВКЛАДКА 4: UGC — 1 відео 9:16, по центру ─── -->
+  <!-- ─── ВКЛАДКА 4: UGC - 1 відео 9:16, по центру ─── -->
   <div class="port-panel" id="tab-ugc">
     <div class="port-grid-ugc">
 
-      <!-- порожня комірка ліворуч — для центрування -->
+      <!-- порожня комірка ліворуч - для центрування -->
       <div></div>
 
       <!-- ═══════════════════════════════════════════════════════
-           ВІДЕО #1 — UGC (9:16)
-           ЯК ДОДАТИ ВІДЕО — інструкція така ж, як вище
+           ВІДЕО #1 - UGC (9:16)
+           ЯК ДОДАТИ ВІДЕО - інструкція така ж, як вище
       ═══════════════════════════════════════════════════════ -->
       <div class="p-item-v">
         <div class="p-item-bg" style="background:linear-gradient(160deg,#0d0d1a,#14142d)"></div>
@@ -635,18 +766,18 @@
         <div class="p-label">9:16</div>
       </div>
 
-      <!-- порожня комірка праворуч — для центрування -->
+      <!-- порожня комірка праворуч - для центрування -->
       <div></div>
 
     </div>
   </div>
 
-  <!-- ─── ВКЛАДКА 5: AI — 3 відео 9:16 ─── -->
+  <!-- ─── ВКЛАДКА 5: AI - 3 відео 9:16 ─── -->
   <div class="port-panel" id="tab-ai">
     <div class="port-grid-v">
 
       <!-- ═══════════════════════════════════════════════════════
-           ВІДЕО #1 — AI Avatar (9:16)
+           ВІДЕО #1 - AI Avatar (9:16)
       ═══════════════════════════════════════════════════════ -->
       <div class="p-item-v">
         <div class="p-item-bg" style="background:linear-gradient(160deg,#0d1a1a,#0d2828)"></div>
@@ -660,7 +791,7 @@
       </div>
 
       <!-- ═══════════════════════════════════════════════════════
-           ВІДЕО #2 — AI Avatar (9:16)
+           ВІДЕО #2 - AI Avatar (9:16)
       ═══════════════════════════════════════════════════════ -->
       <div class="p-item-v">
         <div class="p-item-bg" style="background:linear-gradient(160deg,#1a0d1a,#2d142d)"></div>
@@ -674,7 +805,7 @@
       </div>
 
       <!-- ═══════════════════════════════════════════════════════
-           ВІДЕО #3 — AI Avatar (9:16)
+           ВІДЕО #3 - AI Avatar (9:16)
       ═══════════════════════════════════════════════════════ -->
       <div class="p-item-v">
         <div class="p-item-bg" style="background:linear-gradient(160deg,#0d1a10,#143020)"></div>
@@ -699,7 +830,7 @@
      PRICING
 ═══════════════════════════════════════════ -->
 <section id="pricing" class="pricing-section">
-  <div class="s-label">/ 04 — Розцінки</div>
+  <div class="s-label">/ 04 - Розцінки</div>
   <h2 class="s-title reveal">ЦІНИ НА<br>МОНТАЖ</h2>
   <div class="pricing-cards reveal">
 
@@ -716,19 +847,19 @@
         <li class="on"><span class="ic">✓</span><span><strong>Автоматичні субтитри</strong></span></li>
         <li class="on"><span class="ic">✓</span><span>Базова <strong>динаміка</strong></span></li>
         <li class="on"><span class="ic">✓</span><span>Підбір та накладання музики</span></li>
-        <li class="off"><span class="ic">—</span><span>Саунддизайн (SFX)</span></li>
-        <li class="off"><span class="ic">—</span><span>B-roll вставки</span></li>
-        <li class="off"><span class="ic">—</span><span>Анімовані вставки</span></li>
-        <li class="off"><span class="ic">—</span><span>Моушен анімації</span></li>
-        <li class="off"><span class="ic">—</span><span>Кольорокорекція</span></li>
-        <li class="off"><span class="ic">—</span><span>Доступ до файлів проєкту</span></li>
-        <li class="off"><span class="ic">—</span><span>Повний фідбек по матеріалу</span></li>
+        <li class="off"><span class="ic">-</span><span>Саунддизайн (SFX)</span></li>
+        <li class="off"><span class="ic">-</span><span>B-roll вставки</span></li>
+        <li class="off"><span class="ic">-</span><span>Анімовані вставки</span></li>
+        <li class="off"><span class="ic">-</span><span>Моушен анімації</span></li>
+        <li class="off"><span class="ic">-</span><span>Кольорокорекція</span></li>
+        <li class="off"><span class="ic">-</span><span>Доступ до файлів проєкту</span></li>
+        <li class="off"><span class="ic">-</span><span>Повний фідбек по матеріалу</span></li>
       </ul>
       <p class="pr-note-small">* Усі правки обговорюються окремо</p>
       <a href="https://t.me/editolog1" target="_blank" class="pr-cta">Замовити →</a>
     </div>
 
-    <!-- Пакет 2 — популярний -->
+    <!-- Пакет 2 - популярний -->
     <div class="pr-card pr-hot">
       <div class="pr-badge">Популярне</div>
       <div class="pr-num">Пакет 02</div>
@@ -745,9 +876,9 @@
         <li class="on"><span class="ic">✓</span><span><strong>B-roll</strong> вставки</span></li>
         <li class="on"><span class="ic">✓</span><span><strong>Анімовані вставки</strong></span></li>
         <li class="on"><span class="ic">✓</span><span><strong>Доступ до файлів проєкту</strong></span></li>
-        <li class="off"><span class="ic">—</span><span>Моушен анімації (Fusion)</span></li>
-        <li class="off"><span class="ic">—</span><span>Кольорокорекція</span></li>
-        <li class="off"><span class="ic">—</span><span>Повний фідбек по матеріалу</span></li>
+        <li class="off"><span class="ic">-</span><span>Моушен анімації (Fusion)</span></li>
+        <li class="off"><span class="ic">-</span><span>Кольорокорекція</span></li>
+        <li class="off"><span class="ic">-</span><span>Повний фідбек по матеріалу</span></li>
       </ul>
       <p class="pr-note-small">* Усі правки обговорюються окремо</p>
       <a href="https://t.me/editolog1" target="_blank" class="pr-cta">Замовити →</a>
@@ -783,12 +914,12 @@
      PROCESS
 ═══════════════════════════════════════════ -->
 <section class="proc-bg">
-  <div class="s-label">/ 05 — Процес</div>
+  <div class="s-label">/ 05 - Процес</div>
   <h2 class="s-title reveal">ЯК МИ<br>ПРАЦЮЄМО</h2>
   <div class="proc-steps reveal">
     <div class="step"><div class="step-dot"></div><div class="step-num">01</div><div class="step-title">Бриф</div><p class="step-desc">Надсилаєш матеріал і розповідаєш про ідею. Узгоджуємо стиль, темп, настрій та дедлайн.</p></div>
-    <div class="step"><div class="step-dot"></div><div class="step-num">02</div><div class="step-title">Монтаж</div><p class="step-desc">Беруся за роботу в DaVinci Resolve. Перша версія — у погоджений строк, зазвичай 24–48 год.</p></div>
-    <div class="step"><div class="step-dot"></div><div class="step-num">03</div><div class="step-title">Правки</div><p class="step-desc">Твій фідбек — головне. Усі правки обговорюємо окремо залежно від обсягу змін.</p></div>
+    <div class="step"><div class="step-dot"></div><div class="step-num">02</div><div class="step-title">Монтаж</div><p class="step-desc">Беруся за роботу в DaVinci Resolve. Перша версія - у погоджений строк, зазвичай 24–48 год.</p></div>
+    <div class="step"><div class="step-dot"></div><div class="step-num">03</div><div class="step-title">Правки</div><p class="step-desc">Твій фідбек - головне. Усі правки обговорюємо окремо залежно від обсягу змін.</p></div>
     <div class="step"><div class="step-dot"></div><div class="step-num">04</div><div class="step-title">Здача</div><p class="step-desc">Фінальний файл у потрібному форматі. Готово до публікації на будь-якій платформі.</p></div>
   </div>
 </section>
@@ -797,10 +928,10 @@
      CONTACT
 ═══════════════════════════════════════════ -->
 <section id="contact">
-  <div class="s-label">/ 06 — Контакт</div>
+  <div class="s-label">/ 06 - Контакт</div>
   <h2 class="s-title reveal">НАПИШИ<br>МЕНІ</h2>
   <div class="reveal" style="width:100%;margin-top:3rem;">
-    <p style="font-size:1rem;color:var(--text-muted);line-height:1.8;margin-bottom:2.5rem;max-width:600px;">Є проєкт? Хочеш обговорити деталі? Або просто хочеш зрозуміти, чи підходжу для твоїх завдань — пиши, відповім швидко.</p>
+    <p style="font-size:1rem;color:var(--text-muted);line-height:1.8;margin-bottom:2.5rem;max-width:600px;">Є проєкт? Хочеш обговорити деталі? Або просто хочеш зрозуміти, чи підходжу для твоїх завдань - пиши, відповім швидко.</p>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);">
       <a href="https://t.me/editolog1" target="_blank" class="c-link" style="border:none;padding:1.8rem 2rem;"><span class="c-icon">✈️</span><span class="c-text">Telegram: @editolog1</span><span class="c-arr">→</span></a>
       <a href="https://www.tiktok.com/@1pupsa" target="_blank" class="c-link" style="border:none;padding:1.8rem 2rem;"><span class="c-icon">🎵</span><span class="c-text">TikTok: @1pupsa</span><span class="c-arr">→</span></a>
@@ -815,17 +946,23 @@
   <div>
     <div style="font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;">/ Додатково</div>
     <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,3rem);line-height:1;margin-bottom:.6rem;">МОЖУ ЗРОБИТИ ТАКИЙ САМИЙ САЙТ</div>
-    <p style="font-size:.9rem;color:var(--text-muted);max-width:520px;line-height:1.7;">Лендінг-сайт для твого портфоліо, бренду або компанії — такий самий стильний та сучасний. Напиши, і обговоримо деталі.</p>
+    <p style="font-size:.9rem;color:var(--text-muted);max-width:520px;line-height:1.7;">Лендінг-сайт для твого портфоліо, бренду або компанії - такий самий стильний та сучасний. Напиши, і обговоримо деталі.</p>
   </div>
   <a href="https://t.me/editolog1" target="_blank" style="display:inline-block;padding:.9rem 2.2rem;background:var(--accent);color:#000;font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:transform .2s,box-shadow .2s;flex-shrink:0;" onmouseover="this.style.transform='translate(-3px,-3px)';this.style.boxShadow='6px 6px 0 #ff4757'" onmouseout="this.style.transform='';this.style.boxShadow=''">Замовити сайт →</a>
 </div>
 
 <footer>
   <div class="f-logo">ІЛЛЯ БАТЮК</div>
-  <div class="f-copy">© 2025 · Відеомонтажер · DaVinci Resolve</div>
+  <div class="f-copy">© 2026 · Відеомонтажер · DaVinci Resolve</div>
 </footer>
 
 <script>
+  // Hamburger menu
+  const hbg = document.getElementById('hamburger');
+  const mob = document.getElementById('navMobile');
+  function closeMobile(){hbg.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';}
+  if(hbg){hbg.addEventListener('click',()=>{hbg.classList.toggle('open');mob.classList.toggle('open');document.body.style.overflow=mob.classList.contains('open')?'hidden':'';})}
+
   // Cursor
   const cur=document.getElementById('cursor'),ring=document.getElementById('ring');
   let mx=0,my=0,rx=0,ry=0;
