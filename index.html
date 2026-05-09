@@ -3,8 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ілля Батюк - Відеомонтажер</title>
+<title data-uk="Ілля Батюк - Відеомонтажер" data-en="Illia Batiuk - Video Editor">Ілля Батюк - Відеомонтажер</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ── LANGUAGE PICKER ── */
+  .lang-divider{width:1px;height:100%;background:rgba(255,255,255,.07);}
+
+  /* ── LANG SWITCHER в nav ── */
+  .lang-switch{
+    font-family:'Space Mono',monospace;font-size:.63rem;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--text-muted);background:none;border:none;
+    cursor:pointer;padding:.2rem .5rem;border:1px solid var(--border);transition:color .2s,border-color .2s;
+  }
+  .lang-switch:hover{color:var(--accent);border-color:var(--accent);}
+
+  .contact-links-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);}
+  .contact-links-grid .c-link{border:none;padding:1.8rem 2rem;}
+</style>
 <style>
   :root {
     --bg:#080808; --bg2:#0f0f0f; --bg3:#141414;
@@ -309,6 +324,8 @@
     }
 
     /* Footer */
+    .contact-links-grid{grid-template-columns:1fr 1fr !important;}
+    .contact-links-grid .c-link{padding:1.2rem 1rem !important;}
     footer{flex-direction:column;gap:.8rem;text-align:center;padding:1.5rem 1.2rem;}
     .f-copy{font-size:.55rem;}
   }
@@ -350,15 +367,23 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="ring"></div>
 
+  <div class="lang-logo">IL<span>BAT</span></div>
+  <div class="lang-btns">
+    <button class="lang-btn primary" onclick="setLang('uk')">🇺🇦 Українська</button>
+    <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+  </div>
+</div>
+
 <nav>
   <a href="#" class="nav-logo">ILBAT</a>
   <ul class="nav-links">
-    <li><a href="#about">Про мене</a></li>
-    <li><a href="#services">Послуги</a></li>
-    <li><a href="#portfolio">Роботи</a></li>
-    <li><a href="#pricing">Ціни</a></li>
-    <li><a href="#contact">Контакт</a></li>
+    <li><a href="#about" data-uk="Про мене" data-en="About" data-uk="Про мене" data-en="About">Про мене</a></li>
+    <li><a href="#services" data-uk="Послуги" data-en="Services" data-uk="Послуги" data-en="Services">Послуги</a></li>
+    <li><a href="#portfolio" data-uk="Роботи" data-en="Works" data-uk="Роботи" data-en="Works">Роботи</a></li>
+    <li><a href="#pricing" data-uk="Ціни" data-en="Pricing" data-uk="Ціни" data-en="Pricing">Ціни</a></li>
+    <li><a href="#contact" data-uk="Контакт" data-en="Contact" data-uk="Контакт" data-en="Contact">Контакт</a></li>
   </ul>
+  <button class="lang-switch" id="langSwitch" onclick="toggleLang()">EN</button>
   <!-- Гамбургер — видно тільки на мобільному -->
   <button class="hamburger" id="hamburger" aria-label="Меню">
     <span></span><span></span><span></span>
@@ -382,20 +407,20 @@
   <div class="hero-film">
     <div class="film-row"></div><div class="film-row"></div><div class="film-row"></div>
   </div>
-  <div class="hero-eyebrow">Відеомонтажер · DaVinci Resolve · Україна</div>
+  <div class="hero-eyebrow" data-uk="Відеомонтажер · DaVinci Resolve · Україна" data-en="Video Editor · DaVinci Resolve · Ukraine">Відеомонтажер · DaVinci Resolve · Україна</div>
   <h1 class="hero-title">ІЛЛЯ<br>БАТЮК</h1>
-  <p class="hero-prof">Професійний відеомонтажер</p>
-  <p class="hero-sub">Від <strong>сирого матеріалу до готового відео</strong> - Reels, TikTok, YouTube, UGC та AI-аватари. Розумію психологію глядача та слідкую за трендами.</p>
+  <p class="hero-prof" data-uk="Професійний відеомонтажер" data-en="Professional Video Editor">Професійний відеомонтажер</p>
+  <p class="hero-sub"><span data-uk="Від" data-en="From">Від</span> <strong data-uk="сирого матеріалу до готового відео" data-en="raw footage to final video">сирого матеріалу до готового відео</strong> - Reels, TikTok, YouTube, UGC <span data-uk="та AI-аватари. Розумію психологію глядача та слідкую за трендами." data-en="and AI avatars. I understand viewer psychology and follow trends.">та AI-аватари. Розумію психологію глядача та слідкую за трендами.</span></p>
   <div class="hero-cta">
-    <a href="https://t.me/editolog1" target="_blank" class="btn-prim">Написати в Telegram</a>
+    <a href="https://t.me/editolog1" target="_blank" class="btn-prim" data-uk="Написати в Telegram" data-en="Message on Telegram">Написати в Telegram</a>
   </div>
-  <div class="hero-scroll"><span class="scroll-line"></span>Гортай вниз</div>
+  <div class="hero-scroll"><span class="scroll-line"></span data-uk="Гортай вниз" data-en="Scroll down">Scroll down</div>
 </section>
 
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span>DaVinci Resolve</span><span class="dot">●</span><span>Reels</span><span class="dot">●</span><span>TikTok</span><span class="dot">●</span><span>YouTube</span><span class="dot">●</span><span>UGC</span><span class="dot">●</span><span>AI Avatar</span><span class="dot">●</span><span>Color Grade</span><span class="dot">●</span><span>Fusion Motion</span><span class="dot">●</span><span>Sound Design</span><span class="dot">●</span>
+    <span data-uk="DaVinci Resolve" data-en="DaVinci Resolve">DaVinci Resolve</span><span class="dot">●</span><span>Reels</span><span class="dot">●</span><span>TikTok</span><span class="dot">●</span><span>YouTube</span><span class="dot">●</span><span>UGC</span><span class="dot">●</span><span>AI Avatar</span><span class="dot">●</span><span>Color Grade</span><span class="dot">●</span><span>Fusion Motion</span><span class="dot">●</span><span>Sound Design</span><span class="dot">●</span>
     <span>DaVinci Resolve</span><span class="dot">●</span><span>Reels</span><span class="dot">●</span><span>TikTok</span><span class="dot">●</span><span>YouTube</span><span class="dot">●</span><span>UGC</span><span class="dot">●</span><span>AI Avatar</span><span class="dot">●</span><span>Color Grade</span><span class="dot">●</span><span>Fusion Motion</span><span class="dot">●</span><span>Sound Design</span><span class="dot">●</span>
   </div>
 </div>
@@ -404,28 +429,28 @@
      ABOUT
 ═══════════════════════════════════════════ -->
 <section id="about">
-  <div class="s-label">/ 01 - Про мене</div>
-  <h2 class="s-title reveal">ХТО Я І<br>ЩО РОБЛЮ</h2>
+  <div class="s-label"><span data-uk="/ 01 - Про мене" data-en="/ 01 - About me">/ 01 - Про мене</span></div>
+  <h2 class="s-title reveal" data-uk="ХТО Я І ЩО РОБЛЮ" data-en="WHO I AM & WHAT I DO">ХТО Я І<br>ЩО РОБЛЮ</h2>
   <div class="about-grid">
     <div class="about-text reveal">
-      <p>Відеомонтажер із <strong>дворічним досвідом</strong>. Працюю з YouTube, TikTok та соціальними платформами - добре розумію <strong>поведінкову психологію глядача</strong> та актуальні тренди.</p>
+      <p><span data-uk="Відеомонтажер із" data-en="Video editor with">Відеомонтажер із</span> <strong data-uk="дворічним досвідом" data-en="two years of experience">дворічним досвідом</strong>. <span data-uk="Працюю з YouTube, TikTok та соціальними платформами - добре розумію" data-en="I work with YouTube, TikTok and social platforms - I understand">Працюю з YouTube, TikTok та соціальними платформами - добре розумію</span> <strong data-uk="поведінкову психологію глядача" data-en="viewer behavioral psychology">поведінкову психологію глядача</strong> <span data-uk="та актуальні тренди." data-en="and current trends.">та актуальні тренди.</span></p>
       <p>Створюю контент <strong>від сирого матеріалу до повного готового відео</strong>. Також працюю з <strong>UGC-контентом</strong>, вмію генерувати ШІ-аватари та ШІ-фото і відео продуктів.</p>
       <p>Відкритий до <strong>будь-яких пропозицій та форматів відео</strong> - якщо є ідея, обговоримо.</p>
       <div class="skills-grid">
-        <div class="skill-pill">Сторітелінг</div>
-        <div class="skill-pill">UGC-контент</div>
-        <div class="skill-pill">Прості склейки</div>
-        <div class="skill-pill">Кольорокорекція</div>
+        <div class="skill-pill" data-uk="Сторітелінг" data-en="Storytelling">Сторітелінг</div>
+        <div class="skill-pill" data-uk="UGC-контент" data-en="UGC Content">UGC-контент</div>
+        <div class="skill-pill" data-uk="Прості склейки" data-en="Simple cuts">Прості склейки</div>
+        <div class="skill-pill" data-uk="Кольорокорекція" data-en="Color Grading">Кольорокорекція</div>
         <div class="skill-pill">Моушен</div>
-        <div class="skill-pill">Саунддизайн</div>
-        <div class="skill-pill">AI-аватари</div>
-        <div class="skill-pill">AI-генерація фото/відео</div>
-        <div class="skill-pill">AI-озвучка</div>
+        <div class="skill-pill" data-uk="Саунддизайн" data-en="Sound Design">Саунддизайн</div>
+        <div class="skill-pill" data-uk="AI-аватари" data-en="AI Avatars">AI-аватари</div>
+        <div class="skill-pill" data-uk="AI-генерація фото/відео" data-en="AI photo/video generation">AI-генерація фото/відео</div>
+        <div class="skill-pill" data-uk="AI-озвучка" data-en="AI Voice-over">AI-озвучка</div>
       </div>
       <div class="about-stats">
-        <div><div class="stat-num">50+</div><div class="stat-label">Проєктів завершено</div></div>
-        <div><div class="stat-num">2+</div><div class="stat-label">Роки досвіду</div></div>
-        <div><div class="stat-num">24h</div><div class="stat-label">Середній дедлайн</div></div>
+        <div><div class="stat-num">50+</div><div class="stat-label" data-uk="Проєктів завершено" data-en="Projects completed">Проєктів завершено</div></div>
+        <div><div class="stat-num">2+</div><div class="stat-label" data-uk="Роки досвіду" data-en="Years of experience">Роки досвіду</div></div>
+        <div><div class="stat-num">24h</div><div class="stat-label" data-uk="Середній дедлайн" data-en="Average deadline">Середній дедлайн</div></div>
       </div>
     </div>
   </div>
@@ -435,13 +460,13 @@
      SERVICES - 3 вкладки
 ═══════════════════════════════════════════ -->
 <section id="services" class="svc-bg">
-  <div class="s-label">/ 02 - Послуги</div>
-  <h2 class="s-title reveal">ЩО<br>РОБЛЮ</h2>
+  <div class="s-label"><span data-uk="/ 02 - Послуги" data-en="/ 02 - Services">/ 02 - Послуги</span></div>
+  <h2 class="s-title reveal" data-uk="ЩО РОБЛЮ" data-en="WHAT I DO">ЩО<br>РОБЛЮ</h2>
 
   <div class="svc-tabs reveal">
-    <button class="svc-tab-btn active" data-svc="reels-svc">TikTok / Reels / Shorts</button>
-    <button class="svc-tab-btn" data-svc="yt-svc">YouTube / Intros</button>
-    <button class="svc-tab-btn" data-svc="ugc-svc">UGC / AI</button>
+    <button class="svc-tab-btn active" data-svc="reels-svc" data-uk="TikTok / Reels / Shorts" data-en="TikTok / Reels / Shorts">TikTok / Reels / Shorts</button>
+    <button class="svc-tab-btn" data-svc="yt-svc" data-uk="YouTube / Intros" data-en="YouTube / Intros">YouTube / Intros</button>
+    <button class="svc-tab-btn" data-svc="ugc-svc" data-uk="UGC / AI" data-en="UGC / AI">UGC / AI</button>
   </div>
 
   <!-- Вкладка 1: TikTok / Reels / Shorts -->
@@ -551,16 +576,16 @@
      PORTFOLIO
 ═══════════════════════════════════════════ -->
 <section id="portfolio" class="port-bg">
-  <div class="s-label">/ 03 - Портфоліо</div>
-  <h2 class="s-title reveal">МОЇ<br>РОБОТИ</h2>
+  <div class="s-label"><span data-uk="/ 03 - Портфоліо" data-en="/ 03 - Portfolio">/ 03 - Портфоліо</span></div>
+  <h2 class="s-title reveal" data-uk="МОЇ РОБОТИ" data-en="MY WORKS">МОЇ<br>РОБОТИ</h2>
 
   <div class="port-tabs reveal">
     <!-- 5 вкладок без "Всі роботи" -->
-    <button class="tab-btn active" data-tab="reels">TikTok / Reels / Shorts</button>
-    <button class="tab-btn" data-tab="youtube">YouTube / Intros</button>
-    <button class="tab-btn" data-tab="motion">Motion Design</button>
-    <button class="tab-btn" data-tab="ugc">UGC</button>
-    <button class="tab-btn" data-tab="ai">AI</button>
+    <button class="tab-btn active" data-tab="reels" data-uk="TikTok / Reels / Shorts" data-en="TikTok / Reels / Shorts">TikTok / Reels / Shorts</button>
+    <button class="tab-btn" data-tab="youtube" data-uk="YouTube / Intros" data-en="YouTube / Intros">YouTube / Intros</button>
+    <button class="tab-btn" data-tab="motion" data-uk="Motion Design" data-en="Motion Design">Motion Design</button>
+    <button class="tab-btn" data-tab="ugc" data-uk="UGC" data-en="UGC">UGC</button>
+    <button class="tab-btn" data-tab="ai" data-uk="AI" data-en="AI">AI</button>
   </div>
 
   <!-- ─── ВКЛАДКА 1: TikTok / Reels / Shorts - 3 відео 9:16 ─── -->
@@ -742,7 +767,7 @@
       <div class="p-item-v">
         <div class="p-item-bg" style="background:linear-gradient(160deg,#0d0d1a,#14142d)"></div>
      <iframe class="p-video"
-            src="https://drive.google.com/file/d/1eabtdM9kBv6Mz42wj76fKnA9FLWscGB8/preview"
+            src="https://drive.google.com/file/d/1qROmjR_JlHmyEBJN3pc_RFve_5UgmyNv/preview"
             frameborder="0"
             allow="autoplay"
             allowfullscreen>
@@ -814,17 +839,17 @@
      PRICING
 ═══════════════════════════════════════════ -->
 <section id="pricing" class="pricing-section">
-  <div class="s-label">/ 04 - Розцінки</div>
-  <h2 class="s-title reveal">ЦІНИ НА<br>МОНТАЖ</h2>
+  <div class="s-label"><span data-uk="/ 04 - Розцінки" data-en="/ 04 - Pricing">/ 04 - Розцінки</span></div>
+  <h2 class="s-title reveal" data-uk="ЦІНИ НА МОНТАЖ" data-en="EDITING RATES">ЦІНИ НА<br>МОНТАЖ</h2>
   <div class="pricing-cards reveal">
 
     <!-- Пакет 1 -->
     <div class="pr-card">
-      <div class="pr-num">Пакет 01</div>
+      <div class="pr-num" data-uk="Пакет 01" data-en="Package 01">Пакет 01</div>
       <div class="pr-name">SIMPLE CUT</div>
       <div class="pr-price">
         <span class="pr-dollar">$7</span>
-        <span class="pr-note">за мій<br>час роботи</span>
+        <span class="pr-note" data-uk="за мій час роботи" data-en="per hour of my work">за мій<br>час роботи</span>
       </div>
       <ul class="pr-list">
         <li class="on"><span class="ic">✓</span><span>Монтаж та <strong>прості склейки</strong></span></li>
@@ -839,14 +864,14 @@
         <li class="off"><span class="ic">-</span><span>Доступ до файлів проєкту</span></li>
         <li class="off"><span class="ic">-</span><span>Повний фідбек по матеріалу</span></li>
       </ul>
-      <p class="pr-note-small">* Усі правки обговорюються окремо</p>
-      <a href="https://t.me/editolog1" target="_blank" class="pr-cta">Замовити →</a>
+      <p class="pr-note-small"><span data-uk="* Усі правки обговорюються окремо" data-en="* All revisions are discussed separately">* Усі правки обговорюються окремо</span></p>
+      <a href="https://t.me/editolog1" target="_blank" class="pr-cta" data-uk="Замовити →" data-en="Order →">Замовити →</a>
     </div>
 
     <!-- Пакет 2 - популярний -->
     <div class="pr-card pr-hot">
-      <div class="pr-badge">Популярне</div>
-      <div class="pr-num">Пакет 02</div>
+      <div class="pr-badge" data-uk="Популярне" data-en="Popular">Популярне</div>
+      <div class="pr-num" data-uk="Пакет 02" data-en="Package 02">Пакет 02</div>
       <div class="pr-name">STANDARD</div>
       <div class="pr-price">
         <span class="pr-dollar">$10</span>
@@ -870,7 +895,7 @@
 
     <!-- Пакет 3 -->
     <div class="pr-card">
-      <div class="pr-num">Пакет 03</div>
+      <div class="pr-num" data-uk="Пакет 03" data-en="Package 03">Пакет 03</div>
       <div class="pr-name">FULL PACK</div>
       <div class="pr-price">
         <span class="pr-dollar">$17</span>
@@ -898,13 +923,13 @@
      PROCESS
 ═══════════════════════════════════════════ -->
 <section class="proc-bg">
-  <div class="s-label">/ 05 - Процес</div>
-  <h2 class="s-title reveal">ЯК МИ<br>ПРАЦЮЄМО</h2>
+  <div class="s-label"><span data-uk="/ 05 - Процес" data-en="/ 05 - Process">/ 05 - Процес</span></div>
+  <h2 class="s-title reveal" data-uk="ЯК МИ ПРАЦЮЄМО" data-en="HOW WE WORK">ЯК МИ<br>ПРАЦЮЄМО</h2>
   <div class="proc-steps reveal">
-    <div class="step"><div class="step-dot"></div><div class="step-num">01</div><div class="step-title">Бриф</div><p class="step-desc">Надсилаєш матеріал і розповідаєш про ідею. Узгоджуємо стиль, темп, настрій та дедлайн.</p></div>
-    <div class="step"><div class="step-dot"></div><div class="step-num">02</div><div class="step-title">Монтаж</div><p class="step-desc">Беруся за роботу в DaVinci Resolve. Перша версія - у погоджений строк, зазвичай 24–48 год.</p></div>
-    <div class="step"><div class="step-dot"></div><div class="step-num">03</div><div class="step-title">Правки</div><p class="step-desc">Твій фідбек - головне. Усі правки обговорюємо окремо залежно від обсягу змін.</p></div>
-    <div class="step"><div class="step-dot"></div><div class="step-num">04</div><div class="step-title">Здача</div><p class="step-desc">Фінальний файл у потрібному форматі. Готово до публікації на будь-якій платформі.</p></div>
+    <div class="step"><div class="step-dot"></div><div class="step-num">01</div><div class="step-title" data-uk="Бриф" data-en="Brief">Бриф</div><p class="step-desc"><span data-uk="Надсилаєш матеріал і розповідаєш про ідею. Узгоджуємо стиль, темп, настрій та дедлайн." data-en="You send the material and describe the idea. We agree on style, pace, mood and deadline.">Надсилаєш матеріал і розповідаєш про ідею. Узгоджуємо стиль, темп, настрій та дедлайн.</span></p></div>
+    <div class="step"><div class="step-dot"></div><div class="step-num">02</div><div class="step-title" data-uk="Монтаж" data-en="Editing">Монтаж</div><p class="step-desc"><span data-uk="Беруся за роботу в DaVinci Resolve. Перша версія - у погоджений строк, зазвичай 24–48 год." data-en="I start working in DaVinci Resolve. First version delivered within the agreed deadline, usually 24–48h.">Беруся за роботу в DaVinci Resolve. Перша версія - у погоджений строк, зазвичай 24–48 год.</span></p></div>
+    <div class="step"><div class="step-dot"></div><div class="step-num">03</div><div class="step-title" data-uk="Правки" data-en="Revisions">Правки</div><p class="step-desc"><span data-uk="Твій фідбек - головне. Усі правки обговорюємо окремо залежно від обсягу змін." data-en="Your feedback is priority. All revisions are discussed separately depending on the scope of changes.">Твій фідбек - головне. Усі правки обговорюємо окремо залежно від обсягу змін.</span></p></div>
+    <div class="step"><div class="step-dot"></div><div class="step-num">04</div><div class="step-title" data-uk="Здача" data-en="Delivery">Здача</div><p class="step-desc"><span data-uk="Фінальний файл у потрібному форматі. Готово до публікації на будь-якій платформі." data-en="Final file in the required format. Ready to publish on any platform.">Фінальний файл у потрібному форматі. Готово до публікації на будь-якій платформі.</span></p></div>
   </div>
 </section>
 
@@ -912,14 +937,15 @@
      CONTACT
 ═══════════════════════════════════════════ -->
 <section id="contact">
-  <div class="s-label">/ 06 - Контакт</div>
-  <h2 class="s-title reveal">НАПИШИ<br>МЕНІ</h2>
+  <div class="s-label"><span data-uk="/ 06 - Контакт" data-en="/ 06 - Contact">/ 06 - Контакт</span></div>
+  <h2 class="s-title reveal" data-uk="НАПИШИ МЕНІ" data-en="GET IN TOUCH">НАПИШИ<br>МЕНІ</h2>
   <div class="reveal" style="width:100%;margin-top:3rem;">
-    <p style="font-size:1rem;color:var(--text-muted);line-height:1.8;margin-bottom:2.5rem;max-width:600px;">Є проєкт? Хочеш обговорити деталі? Або просто хочеш зрозуміти, чи підходжу для твоїх завдань - пиши, відповім швидко.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);">
-      <a href="https://t.me/editolog1" target="_blank" class="c-link" style="border:none;padding:1.8rem 2rem;"><span class="c-icon">✈️</span><span class="c-text">Telegram: @editolog1</span><span class="c-arr">→</span></a>
-      <a href="https://www.tiktok.com/@1pupsa" target="_blank" class="c-link" style="border:none;padding:1.8rem 2rem;"><span class="c-icon">🎵</span><span class="c-text">TikTok: @1pupsa</span><span class="c-arr">→</span></a>
-      <a href="https://drive.google.com/drive/folders/1SnYywxG6Kt95woaO1txvbTkV1uu58Xyq?usp=sharing" target="_blank" class="c-link" style="border:none;padding:1.8rem 2rem;"><span class="c-icon">📁</span><span class="c-text">Портфоліо на Google Drive</span><span class="c-arr">→</span></a>
+    <p style="font-size:1rem;color:var(--text-muted);line-height:1.8;margin-bottom:2.5rem;max-width:600px;"><span data-uk="Є проєкт? Хочеш обговорити деталі? Або просто хочеш зрозуміти, чи підходжу для твоїх завдань - пиши, відповім швидко." data-en="Have a project? Want to discuss details? Or just want to know if I'm the right fit - write to me, I respond fast.">Є проєкт? Хочеш обговорити деталі? Або просто хочеш зрозуміти, чи підходжу для твоїх завдань - пиши, відповім швидко.</span></p>
+    <div class="contact-links-grid">
+      <a href="https://t.me/editolog1" target="_blank" class="c-link"><span class="c-icon">✈️</span><span class="c-text" data-uk="Telegram: @editolog1" data-en="Telegram: @editolog1">Telegram: @editolog1</span><span class="c-arr">→</span></a>
+      <a href="https://www.tiktok.com/@1pupsa" target="_blank" class="c-link"><span class="c-icon">🎵</span><span class="c-text" data-uk="TikTok: @1pupsa" data-en="TikTok: @1pupsa">TikTok: @1pupsa</span><span class="c-arr">→</span></a>
+      <a href="mailto:chillik228@gmail.com" class="c-link"><span class="c-icon">📧</span><span class="c-text" data-uk="chillik228@gmail.com" data-en="chillik228@gmail.com">chillik228@gmail.com</span><span class="c-arr">→</span></a>
+      <a href="https://drive.google.com/drive/folders/1SnYywxG6Kt95woaO1txvbTkV1uu58Xyq?usp=sharing" target="_blank" class="c-link"><span class="c-icon">📁</span><span class="c-text" data-uk="Портфоліо на Google Drive" data-en="Portfolio on Google Drive">Portfolio on Google Drive</span><span class="c-arr">→</span></a>
     </div>
   </div>
 </section>
@@ -927,47 +953,347 @@
 
 <footer>
   <div class="f-logo">ILBAT</div>
-  <div class="f-copy">© 2026 · Відеомонтажер · DaVinci Resolve</div>
+  <div class="f-copy" data-uk="© 2026 · Відеомонтажер · DaVinci Resolve" data-en="© 2026 · Video Editor · DaVinci Resolve">© 2026 · Відеомонтажер · DaVinci Resolve</div>
 </footer>
 
 <script>
-  // Hamburger menu
+  // ── LANGUAGE SYSTEM ──────────────────────────────────
+  let currentLang = 'uk';
+
+  const PRICING_EN = {
+    'SIMPLE CUT': {
+      desc: 'Simple cuts with auto subtitles and dynamics. No sound design, B-roll, motion animations, etc.',
+      items: [
+        [true,  'Editing & <strong>simple cuts</strong>'],
+        [true,  '<strong>Auto subtitles</strong>'],
+        [true,  'Basic <strong>dynamics</strong>'],
+        [true,  'Music selection & overlay'],
+        [false, 'Sound design (SFX)'],
+        [false, 'B-roll inserts'],
+        [false, 'Animated inserts'],
+        [false, 'Motion animations'],
+        [false, 'Color grading'],
+        [false, 'Access to project files'],
+        [false, 'Full feedback on footage'],
+      ]
+    },
+    'STANDARD': {
+      desc: 'Hook with manual subtitles, Body with auto subtitles, dynamics, sound, B-roll and zooms. No motion animations or color grading.',
+      items: [
+        [true,  '<strong>Hook</strong> with manual subtitles'],
+        [true,  '<strong>Body</strong> with auto subtitles'],
+        [true,  'Dynamics + <strong>zooms</strong>'],
+        [true,  '<strong>Sound design</strong> (SFX)'],
+        [true,  '<strong>B-roll</strong> inserts'],
+        [true,  '<strong>Animated inserts</strong>'],
+        [true,  '<strong>Access to project files</strong>'],
+        [false, 'Motion animations (Fusion)'],
+        [false, 'Color grading'],
+        [false, 'Full feedback on footage'],
+      ]
+    },
+    'FULL PACK': {
+      desc: 'Full pack: dynamics, manual subtitles, B-roll, motion animations, color grading, sound and zooms. Maximum quality.',
+      items: [
+        [true, 'Dynamics + <strong>zooms</strong>'],
+        [true, '<strong>Manual subtitles</strong> (full video)'],
+        [true, '<strong>B-roll</strong> inserts'],
+        [true, '<strong>Animated inserts</strong>'],
+        [true, '<strong>Motion animations</strong> (Fusion)'],
+        [true, '<strong>Color grading</strong> (DaVinci)'],
+        [true, '<strong>Sound design</strong> (SFX)'],
+        [true, '<strong>Access to project files</strong>'],
+        [true, '<strong>Full feedback</strong> on recorded footage'],
+      ]
+    }
+  };
+
+  const SERVICES_EN = {
+    'reels-svc': [
+      { num:'01', icon:'📱', title:'Editing & Dynamics',
+        desc:'Dynamic vertical content editing for Instagram, TikTok and YouTube Shorts. Trending transitions, music selection — content that stops the scroll.',
+        tags:['Transitions','Dynamics','9:16','Hook'] },
+      { num:'02', icon:'📝', title:'Subtitles & Text',
+        desc:'Manual and auto subtitles, animated text inserts. Style matching Reels trends or custom design for your brand.',
+        tags:['Manual subs','Auto subs','Motion Text'] },
+      { num:'03', icon:'🎵', title:'Sound Design',
+        desc:'Music selection and overlay, sound effects (SFX), video-to-beat sync — what makes a video feel alive.',
+        tags:['SFX','Music','Beat sync'] },
+      { num:'04', icon:'🎬', title:'B-roll & Zooms',
+        desc:'B-roll inserts to strengthen the narrative, zoom transitions and cinematic techniques that hold viewer attention.',
+        tags:['B-roll','Zooms','Transitions'] },
+    ],
+    'yt-svc': [
+      { num:'01', icon:'🎥', title:'YouTube Videos',
+        desc:'Full editing of long-form YouTube content: storytelling, reviews, interviews. I remove pauses and mistakes, add B-roll, graphics and lower thirds.',
+        tags:['Long-form','16:9','Chapters'] },
+      { num:'02', icon:'✨', title:'Intro / Outro',
+        desc:'Animated intros and outros for YouTube channels. Motion design in Fusion — custom style for your brand.',
+        tags:['Fusion','Motion','Branding'] },
+      { num:'03', icon:'🎨', title:'Color Grading',
+        desc:'Color correction and grading in DaVinci Resolve. I create a unique visual style or match your existing channel look.',
+        tags:['DaVinci','Color Grade','LUTs'] },
+      { num:'04', icon:'💬', title:'Footage Feedback',
+        desc:'Full analysis of recorded footage: what to keep, what to cut, how to improve delivery. Helping make the video better before editing starts.',
+        tags:['Analysis','Script','Feedback'] },
+    ],
+    'ugc-svc': [
+      { num:'01', icon:'🛍️', title:'UGC Content',
+        desc:'UGC videos for brands and ad campaigns. From concept to final material — native content people trust.',
+        tags:['UGC','Brands','Advertising'] },
+      { num:'02', icon:'🤖', title:'AI Avatars',
+        desc:'Generating and integrating AI avatars into advertising and content videos. A modern approach for brands looking to scale production.',
+        tags:['AI Avatar','Generation','AI'] },
+      { num:'03', icon:'📸', title:'AI Product Photos & Videos',
+        desc:'Generating high-quality product photos and videos using AI for marketplaces, social media and advertising materials.',
+        tags:['AI Generation','Product','Photo','Video'] },
+      { num:'04', icon:'🔄', title:'Full Cycle',
+        desc:'From concept to finished advertising material. I handle the entire process — you get the final file without extra effort.',
+        tags:['Turnkey','Concept','Execution'] },
+    ]
+  };
+
+  function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('ilbat_lang', lang);
+    document.getElementById('langSwitch').textContent = lang === 'uk' ? 'EN' : 'UA';
+    document.documentElement.lang = lang === 'uk' ? 'uk' : 'en';
+    applyLang(lang);
+  }
+
+  function toggleLang() {
+    setLang(currentLang === 'uk' ? 'en' : 'uk');
+  }
+
+  function applyLang(lang) {
+    const en = (lang === 'en');
+
+    // ── Hero ──
+    document.querySelector('.hero-title').innerHTML     = en ? 'ILLIA<br>BATIUK' : 'ІЛЛЯ<br>БАТЮК';
+    document.querySelector('.hero-eyebrow').textContent = en ? 'Video Editor · DaVinci Resolve · Ukraine' : 'Відеомонтажер · DaVinci Resolve · Україна';
+    document.querySelector('.hero-prof').textContent    = en ? 'Professional Video Editor' : 'Професійний відеомонтажер';
+    document.querySelector('.hero-sub').innerHTML       = en
+      ? 'From <strong>raw footage to finished video</strong> - Reels, TikTok, YouTube, UGC and AI avatars. I understand viewer psychology and follow trends.'
+      : 'Від <strong>сирого матеріалу до готового відео</strong> - Reels, TikTok, YouTube, UGC та AI-аватари. Розумію психологію глядача та слідкую за трендами.';
+    const tgBtn = document.querySelector('.hero-cta a[href*="t.me"]');
+    if (tgBtn) tgBtn.textContent = en ? 'Message on Telegram' : 'Написати в Telegram';
+    const mailBtn = document.querySelector('.hero-cta a[href^="mailto"]');
+    if (mailBtn) mailBtn.textContent = en ? 'Send an email' : 'Написати на пошту';
+
+    // ── About ──
+    document.querySelector('#about .s-label').textContent  = en ? '/ 01 - About me' : '/ 01 - Про мене';
+    document.querySelector('#about .s-title').innerHTML    = en ? 'WHO I AM &<br>WHAT I DO' : 'ХТО Я І<br>ЩО РОБЛЮ';
+    const cardTag = document.querySelector('.about-card-tag');
+    if (cardTag) cardTag.textContent = en ? 'Video Editor · DaVinci Resolve · 2+ years' : 'Відеомонтажер · DaVinci Resolve · 2+ роки';
+    const cardP = document.querySelector('.about-card > p');
+    if (cardP) cardP.textContent = en ? 'Skills & tools:' : 'Навички та інструменти:';
+    const swLabelsEN = ['DaVinci Resolve','Fusion (Motion)','Color Grading','Sound Design','UGC / AI Avatar','AI Voice-over'];
+    const swLabelsUK = ['DaVinci Resolve','Fusion (Motion)','Кольорокорекція','Саунддизайн','UGC / AI Avatar','AI-озвучка'];
+    document.querySelectorAll('.sw-name').forEach((el, i) => {
+      el.textContent = (en ? swLabelsEN : swLabelsUK)[i] || el.textContent;
+    });
+    const ps = document.querySelectorAll('.about-text p');
+    if (ps[0]) ps[0].innerHTML = en
+      ? 'Video editor with <strong>two years of experience</strong>. I work with YouTube, TikTok and social platforms - I understand <strong>viewer behavioral psychology</strong> and current trends.'
+      : 'Відеомонтажер із <strong>дворічним досвідом</strong>. Працюю з YouTube, TikTok та соціальними платформами - добре розумію <strong>поведінкову психологію глядача</strong> та актуальні тренди.';
+    if (ps[1]) ps[1].innerHTML = en
+      ? 'I create content <strong>from raw footage to the finished video</strong>. I also work with <strong>UGC content</strong>, generate AI avatars and AI product photos and videos.'
+      : 'Створюю контент <strong>від сирого матеріалу до повного готового відео</strong>. Також працюю з <strong>UGC-контентом</strong>, вмію генерувати ШІ-аватари та ШІ-фото і відео продуктів.';
+    if (ps[2]) ps[2].innerHTML = en
+      ? "Open to <strong>any proposals and video formats</strong> - if you have an idea, let's discuss it."
+      : 'Відкритий до <strong>будь-яких пропозицій та форматів відео</strong> - якщо є ідея, обговоримо.';
+    const statsEN = ['Projects completed','Years of experience','Average deadline'];
+    const statsUK = ['Проєктів завершено','Роки досвіду','Середній дедлайн'];
+    document.querySelectorAll('.stat-label').forEach((el, i) => {
+      el.textContent = (en ? statsEN : statsUK)[i] || el.textContent;
+    });
+    const skillsEN = ['Storytelling','UGC Content','Simple cuts','Color Grading','Motion (Fusion)','Sound Design','AI Avatars','AI photo/video gen','AI Voice-over'];
+    const skillsUK = ['Сторітелінг','UGC-контент','Прості склейки','Кольорокорекція','Моушен (Fusion)','Саунддизайн','AI-аватари','AI-генерація фото/відео','AI-озвучка'];
+    document.querySelectorAll('.skill-pill').forEach((el, i) => {
+      el.textContent = (en ? skillsEN : skillsUK)[i] || el.textContent;
+    });
+
+    // ── Services - ALL panels ──
+    document.querySelector('#services .s-label').textContent = en ? '/ 02 - Services' : '/ 02 - Послуги';
+    document.querySelector('#services .s-title').innerHTML   = en ? 'WHAT<br>I DO' : 'ЩО<br>РОБЛЮ';
+    document.querySelectorAll('.svc-tab-btn').forEach(btn => {
+      const map = {'reels-svc':'TikTok / Reels / Shorts','yt-svc':'YouTube / Intros','ugc-svc':'UGC / AI'};
+      btn.textContent = map[btn.dataset.svc] || btn.textContent;
+    });
+    ['reels-svc','yt-svc','ugc-svc'].forEach(id => updateSvcPanel(id, lang));
+
+    // ── Portfolio ──
+    document.querySelector('#portfolio .s-label').textContent = en ? '/ 03 - Portfolio' : '/ 03 - Портфоліо';
+    document.querySelector('#portfolio .s-title').innerHTML   = en ? 'MY<br>WORKS' : 'МОЇ<br>РОБОТИ';
+    const dl = document.querySelector('.drive-link');
+    if (dl) dl.textContent = en ? '📁  All works on Google Drive →' : '📁  Усі роботи на Google Drive →';
+
+    // ── Pricing ──
+    document.querySelector('#pricing .s-label').textContent = en ? '/ 04 - Pricing' : '/ 04 - Розцінки';
+    document.querySelector('#pricing .s-title').innerHTML   = en ? 'EDITING<br>RATES' : 'ЦІНИ НА<br>МОНТАЖ';
+    document.querySelectorAll('.pr-note').forEach(el => { el.innerHTML = en ? 'per hour<br>of my work' : 'за мій<br>час роботи'; });
+    document.querySelectorAll('.pr-cta').forEach(el  => { el.textContent = en ? 'Order →' : 'Замовити →'; });
+    document.querySelectorAll('.pr-note-small').forEach(el => { el.textContent = en ? '* All revisions are discussed separately' : '* Усі правки обговорюються окремо'; });
+    const badge = document.querySelector('.pr-badge');
+    if (badge) badge.textContent = en ? 'Popular' : 'Популярне';
+    const PACKS = {
+      en: {
+        'SIMPLE CUT': [[1,'Editing & <strong>simple cuts</strong>'],[1,'<strong>Auto subtitles</strong>'],[1,'Basic <strong>dynamics</strong>'],[1,'Music selection & overlay'],[0,'Sound design (SFX)'],[0,'B-roll inserts'],[0,'Animated inserts'],[0,'Motion animations'],[0,'Color grading'],[0,'Access to project files'],[0,'Full footage feedback']],
+        'STANDARD':   [[1,'<strong>Hook</strong> with manual subtitles'],[1,'<strong>Body</strong> with auto subtitles'],[1,'Dynamics + <strong>zooms</strong>'],[1,'<strong>Sound design</strong> (SFX)'],[1,'<strong>B-roll</strong> inserts'],[1,'<strong>Animated inserts</strong>'],[1,'<strong>Access to project files</strong>'],[0,'Motion animations (Fusion)'],[0,'Color grading'],[0,'Full footage feedback']],
+        'FULL PACK':  [[1,'Dynamics + <strong>zooms</strong>'],[1,'<strong>Manual subtitles</strong> (full video)'],[1,'<strong>B-roll</strong> inserts'],[1,'<strong>Animated inserts</strong>'],[1,'<strong>Motion animations</strong> (Fusion)'],[1,'<strong>Color grading</strong> (DaVinci)'],[1,'<strong>Sound design</strong> (SFX)'],[1,'<strong>Access to project files</strong>'],[1,'<strong>Full feedback</strong> on recorded footage']],
+      },
+      uk: {
+        'SIMPLE CUT': [[1,'Монтаж та <strong>прості склейки</strong>'],[1,'<strong>Автоматичні субтитри</strong>'],[1,'Базова <strong>динаміка</strong>'],[1,'Підбір та накладання музики'],[0,'Саунддизайн (SFX)'],[0,'B-roll вставки'],[0,'Анімовані вставки'],[0,'Моушен анімації'],[0,'Кольорокорекція'],[0,'Доступ до файлів проєкту'],[0,'Повний фідбек по матеріалу']],
+        'STANDARD':   [[1,'<strong>Hook</strong> з ручними субтитрами'],[1,'<strong>Body</strong> з автоматичними субтитрами'],[1,'Динаміка + <strong>зуми</strong>'],[1,'<strong>Саунддизайн</strong> (SFX)'],[1,'<strong>B-roll</strong> вставки'],[1,'<strong>Анімовані вставки</strong>'],[1,'<strong>Доступ до файлів проєкту</strong>'],[0,'Моушен анімації (Fusion)'],[0,'Кольорокорекція'],[0,'Повний фідбек по матеріалу']],
+        'FULL PACK':  [[1,'Динаміка + <strong>зуми</strong>'],[1,'<strong>Ручні субтитри</strong> (повне відео)'],[1,'<strong>B-roll</strong> вставки'],[1,'<strong>Анімовані вставки</strong>'],[1,'<strong>Моушен анімації</strong> (Fusion)'],[1,'<strong>Кольорокорекція</strong> (DaVinci)'],[1,'<strong>Саунддизайн</strong> (SFX)'],[1,'<strong>Доступ до файлів проєкту</strong>'],[1,'<strong>Повний фідбек</strong> по відзнятому матеріалу']],
+      }
+    };
+    const packNames = ['SIMPLE CUT','STANDARD','FULL PACK'];
+    document.querySelectorAll('.pr-card').forEach((card, i) => {
+      const items = PACKS[lang][packNames[i]];
+      if (!items) return;
+      card.querySelector('.pr-list').innerHTML = items.map(([on, txt]) =>
+        `<li class="${on?'on':'off'}"><span class="ic">${on?'✓':'—'}</span><span>${txt}</span></li>`
+      ).join('');
+    });
+
+    // ── Process ──
+    document.querySelector('.proc-bg .s-label').textContent = en ? '/ 05 - Process' : '/ 05 - Процес';
+    document.querySelector('.proc-bg .s-title').innerHTML   = en ? 'HOW WE<br>WORK' : 'ЯК МИ<br>ПРАЦЮЄМО';
+    const stepsData = {
+      en: [['Brief','You send the material and describe the idea. We agree on style, pace, mood and deadline.'],['Editing','I start working in DaVinci Resolve. First version within the agreed deadline, usually 24-48h.'],['Revisions','Your feedback is priority. All revisions are discussed separately depending on the scope.'],['Delivery','Final file in the required format. Ready to publish on any platform.']],
+      uk: [['Бриф','Надсилаєш матеріал і розповідаєш про ідею. Узгоджуємо стиль, темп, настрій та дедлайн.'],['Монтаж','Беруся за роботу в DaVinci Resolve. Перша версія - у погоджений строк, зазвичай 24-48 год.'],['Правки','Твій фідбек - головне. Усі правки обговорюємо окремо залежно від обсягу змін.'],['Здача','Фінальний файл у потрібному форматі. Готово до публікації на будь-якій платформі.']]
+    };
+    document.querySelectorAll('.step').forEach((step, i) => {
+      const d = stepsData[lang][i];
+      if (!d) return;
+      step.querySelector('.step-title').textContent = d[0];
+      step.querySelector('.step-desc').textContent  = d[1];
+    });
+
+    // ── Contact ──
+    document.querySelector('#contact .s-label').textContent = en ? '/ 06 - Contact' : '/ 06 - Контакт';
+    document.querySelector('#contact .s-title').innerHTML   = en ? 'GET IN<br>TOUCH' : 'НАПИШИ<br>МЕНІ';
+    const cp = document.querySelector('#contact p');
+    if (cp) cp.textContent = en
+      ? "Have a project? Want to discuss details? Or just want to know if I'm the right fit - write to me, I respond fast."
+      : 'Є проєкт? Хочеш обговорити деталі? Або просто хочеш зрозуміти, чи підходжу для твоїх завдань - пиши, відповім швидко.';
+    const driveSpan = document.querySelector('#contact .c-text[data-uk]');
+    if (driveSpan) driveSpan.textContent = en ? 'Portfolio on Google Drive' : 'Портфоліо на Google Drive';
+
+    // ── Nav ──
+    const navEN = ['About','Services','Works','Pricing','Contact'];
+    const navUK = ['Про мене','Послуги','Роботи','Ціни','Контакт'];
+    document.querySelectorAll('.nav-links a').forEach((a, i) => { a.textContent = (en ? navEN : navUK)[i] || a.textContent; });
+    document.querySelectorAll('.nav-mobile a').forEach((a, i) => { a.textContent = (en ? navEN : navUK)[i] || a.textContent; });
+
+    // ── Footer ──
+    const fc = document.querySelector('.f-copy');
+    if (fc) fc.textContent = en ? '© 2026 · Video Editor · DaVinci Resolve' : '© 2026 · Відеомонтажер · DaVinci Resolve';
+
+    // ── Lang button ──
+    const lb = document.getElementById('langLabel');
+    if (lb) lb.textContent = en ? 'UA' : 'EN';
+  }
+
+  // Store original UK HTML on first load
+  const _ukPanels = {};
+
+  function updateSvcPanel(panelId, lang) {
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    const grid = panel.querySelector('.svc-grid');
+    if (!grid) return;
+    if (!_ukPanels[panelId]) _ukPanels[panelId] = grid.innerHTML;
+    if (lang === 'en') {
+      const data = SERVICES_EN[panelId];
+      if (!data) return;
+      grid.innerHTML = data.map(s => `
+        <div class="svc-card">
+          <div class="svc-num">${s.num}</div>
+          <div class="svc-icon">${s.icon}</div>
+          <div class="svc-title">${s.title}</div>
+          <p class="svc-desc">${s.desc}</p>
+          <div class="svc-tags">${s.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        </div>`).join('');
+    } else {
+      if (_ukPanels[panelId]) grid.innerHTML = _ukPanels[panelId];
+    }
+  }
+
+  // Init on load — save UK panels first, then apply saved lang
+  window.addEventListener('DOMContentLoaded', () => {
+    // Save original UK content before any translation
+    ['reels-svc','yt-svc','ugc-svc'].forEach(id => {
+      const panel = document.getElementById(id);
+      if (panel) {
+        const grid = panel.querySelector('.svc-grid');
+        if (grid) _ukPanels[id] = grid.innerHTML;
+      }
+    });
+    const saved = localStorage.getItem('ilbat_lang') || 'en';
+    currentLang = saved;
+    applyLang(saved);
+  });
+
+  // ── HAMBURGER ─────────────────────────────────────────
   const hbg = document.getElementById('hamburger');
   const mob = document.getElementById('navMobile');
   function closeMobile(){hbg.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';}
   if(hbg){hbg.addEventListener('click',()=>{hbg.classList.toggle('open');mob.classList.toggle('open');document.body.style.overflow=mob.classList.contains('open')?'hidden':'';})}
 
-  // Cursor
-  const cur=document.getElementById('cursor'),ring=document.getElementById('ring');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-  (function tick(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
-
-  // Scroll reveal
+  // ── SCROLL REVEAL ─────────────────────────────────────
   const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*70);obs.unobserve(e.target);}});},{threshold:.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-  // Portfolio tabs
+  // ── PORTFOLIO TABS ────────────────────────────────────
   document.querySelectorAll('.tab-btn').forEach(btn=>{
     btn.addEventListener('click',function(){
       document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
       document.querySelectorAll('.port-panel').forEach(p=>p.classList.remove('active'));
       this.classList.add('active');
       document.getElementById('tab-'+this.dataset.tab).classList.add('active');
+      initLazyVideos();
     });
   });
 
-  // Services tabs
+  // ── SERVICES TABS ─────────────────────────────────────
   document.querySelectorAll('.svc-tab-btn').forEach(btn=>{
     btn.addEventListener('click',function(){
       document.querySelectorAll('.svc-tab-btn').forEach(b=>b.classList.remove('active'));
       document.querySelectorAll('.svc-panel').forEach(p=>p.classList.remove('active'));
       this.classList.add('active');
-      document.getElementById(this.dataset.svc).classList.add('active');
+      const panelId = this.dataset.svc;
+      document.getElementById(panelId).classList.add('active');
+      if (currentLang === 'en') updateSvcPanel(panelId, 'en');
     });
   });
 
-  // Form submit removed
+  // ── VIDEO AUTOPLAY ────────────────────────────────────
+  function initLazyVideos(){
+    const lazyFrames=document.querySelectorAll('[data-src]:not([data-observed])');
+    const vObs=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        const w=entry.target;
+        let iframe=w.querySelector('iframe');
+        if(entry.isIntersecting){
+          if(!iframe){iframe=document.createElement('iframe');iframe.setAttribute('allow','autoplay; encrypted-media');iframe.setAttribute('allowfullscreen','');w.appendChild(iframe);}
+          if(!iframe.src||iframe.src!==w.dataset.src){iframe.src=w.dataset.src;iframe.addEventListener('load',()=>{iframe.classList.add('loaded');},{once:true});}
+        } else {
+          if(iframe){iframe.classList.remove('loaded');setTimeout(()=>{iframe.src='';},300);}
+        }
+      });
+    },{threshold:0.3,rootMargin:'0px'});
+    lazyFrames.forEach(el=>{el.setAttribute('data-observed','true');vObs.observe(el);});
+    const videoTags=document.querySelectorAll('video.p-video:not([data-observed])');
+    const vtObs=new IntersectionObserver(entries=>{entries.forEach(entry=>{const v=entry.target;if(entry.isIntersecting){v.play().catch(()=>{});}else{v.pause();v.currentTime=0;}});},{threshold:0.3});
+    videoTags.forEach(v=>{v.setAttribute('data-observed','true');vtObs.observe(v);});
+  }
+  initLazyVideos();
+
+  // Cursor refs (display:none but keep refs safe)
+  const cur=document.getElementById('cursor'),ring=document.getElementById('ring');
+  if(cur&&ring){let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});(function tick(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();}
 </script>
 </body>
 </html>
