@@ -324,8 +324,8 @@
     }
 
     /* Footer */
-    .contact-links-grid{grid-template-columns:1fr 1fr !important;}
-    .contact-links-grid .c-link{padding:1.2rem 1rem !important;}
+    .contact-links-grid{grid-template-columns:1fr !important;overflow:hidden;}
+    .contact-links-grid .c-link{padding:1.2rem 1rem !important;min-width:0;overflow:hidden;}
     footer{flex-direction:column;gap:.8rem;text-align:center;padding:1.5rem 1.2rem;}
     .f-copy{font-size:.55rem;}
   }
@@ -958,7 +958,7 @@
 
 <script>
   // ── LANGUAGE SYSTEM ──────────────────────────────────
-  let currentLang = 'uk';
+  let currentLang = 'en';
 
   const PRICING_EN = {
     'SIMPLE CUT': {
@@ -1067,6 +1067,13 @@
 
   function applyLang(lang) {
     const en = (lang === 'en');
+
+    // ── Translate all data-uk/data-en leaf elements ──
+    document.querySelectorAll('[data-uk][data-en]').forEach(el => {
+      if (el.children.length === 0) {
+        el.textContent = el.getAttribute('data-' + lang);
+      }
+    });
 
     // ── Hero ──
     document.querySelector('.hero-title').innerHTML     = en ? 'ILLIA<br>BATIUK' : 'ІЛЛЯ<br>БАТЮК';
@@ -1178,8 +1185,7 @@
     if (cp) cp.textContent = en
       ? "Have a project? Want to discuss details? Or just want to know if I'm the right fit - write to me, I respond fast."
       : 'Є проєкт? Хочеш обговорити деталі? Або просто хочеш зрозуміти, чи підходжу для твоїх завдань - пиши, відповім швидко.';
-    const driveSpan = document.querySelector('#contact .c-text[data-uk]');
-    if (driveSpan) driveSpan.textContent = en ? 'Portfolio on Google Drive' : 'Портфоліо на Google Drive';
+    // Contact link texts — translate all via data attrs (handled by data-uk/data-en loop above)
 
     // ── Nav ──
     const navEN = ['About','Services','Works','Pricing','Contact'];
@@ -1231,7 +1237,7 @@
         if (grid) _ukPanels[id] = grid.innerHTML;
       }
     });
-    const saved = localStorage.getItem('ilbat_lang') || 'en';
+    const saved = localStorage.getItem('ilbat_lang') || 'en'; // default EN
     currentLang = saved;
     applyLang(saved);
   });
